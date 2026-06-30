@@ -26,6 +26,8 @@ npm run preview
 
 ## Deploy Railway (proyecto separado)
 
+**En vivo:** https://procesador-imagenes-ia-production.up.railway.app
+
 1. Crea un **nuevo proyecto** en [Railway](https://railway.com) y conéctalo a este repo (`jeova33/procesador-imagenes-ia`).
 2. Railway detecta `nixpacks.toml` y ejecuta `npm run build` + `npm start`.
 3. Health check: `GET /api/health`
