@@ -50,8 +50,7 @@ export default function App() {
     return null
   }
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+  const loadFile = (file: File | undefined) => {
     setError(null)
     setProcessedImage(null)
 
@@ -72,6 +71,19 @@ export default function App() {
       img.src = event.target?.result as string
     }
     reader.readAsDataURL(file)
+  }
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    loadFile(e.target.files?.[0])
+  }
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    loadFile(e.dataTransfer.files?.[0])
+  }
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
   }
 
   const processImage = () => {
@@ -166,6 +178,8 @@ export default function App() {
             <div
               className="border-2 border-dashed border-gray-700 rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:border-emerald-500 hover:bg-gray-900/50 transition-all bg-gray-900"
               onClick={() => fileInputRef.current?.click()}
+              onDrop={handleDrop}
+              onDragOver={handleDragOver}
             >
               <Upload className="w-12 h-12 text-gray-500 mb-4" />
               <h3 className="text-lg font-medium text-white mb-2">Subir Imagen</h3>
