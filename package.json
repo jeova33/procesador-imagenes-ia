@@ -8,9 +8,12 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "deploy": "node scripts/deploy-pages.mjs"
+    "start": "node server/index.js",
+    "deploy": "node scripts/deploy-pages.mjs",
+    "deploy:railway": "npx @railway/cli up --detach"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "lucide-react": "^1.22.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
